@@ -1,10 +1,10 @@
 {
-  "name": "lib-jitsi-meet",
-  "version": "0.0.0",
+  "name": "@mkhstar/lib-jitsi-meet",
+  "version": "1.0.0",
   "description": "JS library for accessing Jitsi server side deployments",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jitsi/lib-jitsi-meet"
+    "url": "git://github.com/mkhstar/lib-jitsi-meet.git"
   },
   "keywords": [
     "jingle",
@@ -13,7 +13,7 @@
     "browser",
     "jitsi"
   ],
-  "author": "",
+  "author": "Kusi Musah Hussein",
   "readmeFilename": "README.md",
   "dependencies": {
     "@jitsi/js-utils": "1.0.2",
@@ -62,14 +62,17 @@
     "webpack-bundle-analyzer": "3.4.1",
     "webpack-cli": "3.3.11"
   },
+  "main": "./lib-jitsi-meet.min.js",
   "scripts": {
+    "build": "webpack -p",
     "lint": "eslint . && flow",
-    "postinstall": "webpack -p",
+    "prepack": "npm install && npm run build",
+    "release": "npm publish --access public .",
+    "release:beta": "npm run release --tag beta",
     "test": "karma start karma.conf.js",
     "test-watch": "karma start karma.conf.js --no-single-run",
     "validate": "npm ls",
     "watch": "webpack --config webpack.config.js --watch --mode development"
   },
-  "main": "./index.js",
   "license": "Apache-2.0"
 }
